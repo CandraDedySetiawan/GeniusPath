@@ -46,4 +46,4 @@ docker compose up -d
 | ------------------- | ------------------------------------------------------------ |
 | WordPress / Project | [http://geniuspath.local:8080](http://geniuspath.local:8080) |
 | phpMyAdmin          | [http://localhost:8888](http://localhost:8888)               |
-| Nagios              | [http://localhost:8090](http://localhost:8090)               |
+| Nagios              | [http://localhost:8090](http://localhost:8090/nagios4)               |
