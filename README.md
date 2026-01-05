@@ -1,7 +1,7 @@
 ![2026_01_05_Genius Path_page-0001](https://github.com/user-attachments/assets/bbf7064a-d9cd-4b1b-b903-7fbc9544e610)
 
-# GeniusPath
-Many high school and university students struggle to manage their study schedules effectively and often lack clear direction regarding their future careers. Genius Path is an application designed for high school and university students who struggle with managing their study schedules and lack clear direction regarding their future careers. Unlike existing study planner applications that focus only on basic scheduling, Genius Path integrates academic planning with personalized career path recommendations based on students’ interests and results.
+# Genius Path
+*Many high school and university students struggle to manage their study schedules effectively and often lack clear direction regarding their future careers. Genius Path is an application designed for high school and university students who struggle with managing their study schedules and lack clear direction regarding their future careers. Unlike existing study planner applications that focus only on basic scheduling, Genius Path integrates academic planning with personalized career path recommendations based on students’ interests and results.*
 
 This project is a **Docker-based web server** implementation that runs **WordPress with MariaDB as the database**, **BIND9 as the DNS server**, and **phpMyAdmin and Nagios as supporting services**. All services run using **native Docker** on Linux.
 
