@@ -1,0 +1,78 @@
+services:
+  db:
+    image: mariadb:11.4
+    container_name: wp-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: wppass
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - S.O.F.A
+
+  wordpress:
+    build: .
+    container_name: wp-web
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: root
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - ./wp:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - S.O.F.A
+
+  dns:
+    image: ubuntu/bind9:latest
+    container_name: wp-dns
+    ports:
+      - "54:53/tcp"
+      - "54:53/udp"
+    environment:
+      - BIND9_USER=root
+    volumes:
+      - ./bind:/etc/bind
+    networks:
+      - S.O.F.A
+
+  phpmyadmin:
+    image: linuxserver/phpmyadmin:latest
+    container_name: pma
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+      - PMA_ARBITRARY=1
+    ports:
+      - "8888:80"
+    depends_on:
+      - db
+    restart: always
+    networks:
+      - S.O.F.A
+
+  nagios:
+    build: ./nagios
+    container_name: nagios
+    restart: always
+    ports:
+      - "8090:80"
+    networks:
+      - S.O.F.A
+
+volumes:
+  db_data:
+  nagios-data:
+  nagios-config:
+
+networks:
+  S.O.F.A:
+    driver: bridge
